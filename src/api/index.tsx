@@ -20,6 +20,7 @@ const login = async (data: RegisterType) => {
   const result = await axiosClient.post(url, { ...data });
   return result.data;
 };
+
 // 1) Start a new adaptive test session
 export const startTest = async (
   subject: string
