@@ -6,7 +6,7 @@ import {
   StartTestResponse,
   StopTestResponse,
   TestDetailResponse,
-  TestSessionListItem
+  TestSessionListItem,
 } from "../types";
 
 const register = async (data: RegisterType) => {
@@ -33,7 +33,7 @@ export const startTest = async (
 
 // 2) Get next adaptive item
 export const getNextItem = async (
-  sessionId: number,
+  sessionId: number | null,
   response: 0 | 1 | null
 ): Promise<NextItemResponse> => {
   const result = await axiosClient.post<NextItemResponse>(
