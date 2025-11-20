@@ -1,14 +1,12 @@
 import axiosClient from "../configs/axios";
 
 import {
-  RegisterType,
-  StartTestRequest,
-  StartTestResponse,
-  NextItemRequest,
   NextItemResponse,
+  RegisterType,
+  StartTestResponse,
   StopTestResponse,
   TestDetailResponse,
-  TestSessionListItem,
+  TestSessionListItem
 } from "../types";
 
 const register = async (data: RegisterType) => {

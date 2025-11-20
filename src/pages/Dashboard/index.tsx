@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { Button, Card, Radio, Spin, Result, Select, Typography } from "antd";
+import { Button, Card, Radio, Result, Select, Spin, Typography } from "antd";
+import { useState } from "react";
 import * as SC from "./styled";
 
+import Api from "../../api";
 import {
   NextItemResponse,
   StartTestResponse,
   StopTestResponse,
 } from "../../types";
-import Api from "../../api";
 
 const { Title, Text } = Typography;
 

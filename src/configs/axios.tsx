@@ -1,4 +1,3 @@
-import { notification } from "antd";
 import axios, { AxiosResponse } from "axios";
 import Cookies from "js-cookie";
 import queryString from "query-string";

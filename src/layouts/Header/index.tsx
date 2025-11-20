@@ -8,12 +8,11 @@ import { MenuOutlined, PoweroffOutlined } from "@ant-design/icons";
 import Cookies from "js-cookie";
 
 import { BrowserView, MobileView } from "react-device-detect";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ROUTES_PATH } from "../../constants/routers";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { pathname } = useLocation();
 
   const [open, setOpen] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
