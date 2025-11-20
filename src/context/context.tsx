@@ -6,7 +6,6 @@ import {
   useMemo,
   useReducer,
 } from "react";
-import { CollectionsType } from "../types";
 
 const Context = createContext<GlobalContext | null>(null);
 
@@ -18,7 +17,6 @@ type GlobalContext = {
 };
 
 type GlobalState = {
-  collections: CollectionsType[];
   collapsedSider: boolean;
   searchText: string;
   documentId: string;
@@ -51,7 +49,6 @@ function reducer(state: GlobalState, action: ActionType) {
 
 function ContextProvider({ children }: { children: ReactNode }) {
   const initialState: GlobalState = {
-    collections: [],
     collapsedSider: false,
     searchText: "",
     documentId: "3",
@@ -80,16 +77,6 @@ function useContextController() {
   return context;
 }
 
-const setCollections = (
-  dispatch: ({
-    type,
-    value,
-  }: {
-    type: string;
-    value: CollectionsType[];
-  }) => void,
-  value: CollectionsType[]
-) => dispatch({ type: "COLLECTIONS", value });
 const setCollapsedSider = (
   dispatch: ({ type, value }: { type: string; value: boolean }) => void,
   value: boolean
@@ -106,7 +93,6 @@ const setDocumentId = (
 export {
   ContextProvider,
   useContextController,
-  setCollections,
   setCollapsedSider,
   setSearchText,
   setDocumentId,

@@ -3,9 +3,8 @@ import vi_VN from "antd/locale/vi_VN";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { color } from "./constants/theme";
-import Routes from "./routers";
 import { ContextProvider } from "./context/context";
-import { BrowserView, MobileView } from "react-device-detect";
+import Routes from "./routers";
 
 function App() {
   return (

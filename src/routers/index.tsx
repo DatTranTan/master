@@ -7,7 +7,6 @@ import {
 import { GroupRoutesConfig, PageRoutesConfig } from "../configs/routers";
 import { ROUTES_PATH } from "../constants/routers";
 import { GroupLayout } from "../layouts/GroupLayout";
-import SignIn from "../pages/SignIn";
 import { PageLayout } from "../layouts/PageLayout";
 
 const Routes = () => {
