@@ -30,7 +30,7 @@ export const startTest = async (
     subject,
   });
 
-  return result; // <--- vì interceptor đã trả JSON thuần
+  return result.data; // <--- vì interceptor đã trả JSON thuần
 };
 
 // 2) Get next adaptive item
