@@ -22,7 +22,7 @@ export type StartTestResponse = {
 };
 
 export type NextItemRequest = {
-  response: 0 | 1 | null;
+  response: number | null;
 };
 
 export type NextItemResponse = {

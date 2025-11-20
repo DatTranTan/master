@@ -14,7 +14,7 @@ const { Title, Text } = Typography;
 export const Dashboard = () => {
   // UI states
   const [subject, setSubject] = useState<string>("CSDL");
-  const [sessionId, setSessionId] = useState<number | any>(null);
+  const [sessionId, setSessionId] = useState<number | null>(null);
 
   const [question, setQuestion] = useState<NextItemResponse | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
