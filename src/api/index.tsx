@@ -26,20 +26,23 @@ const login = async (data: RegisterType) => {
 export const startTest = async (
   subject: string
 ): Promise<StartTestResponse> => {
-  const url = `/tests/start`;
-  const body: StartTestRequest = { subject };
-  const result = await axiosClient.post(url, body);
-  return result;
+
+  const result = await axiosClient.post<StartTestResponse>(`/tests/start`, { subject });
+
+  return result;  // <--- vì interceptor đã trả JSON thuần
 };
 
 // 2) Get next adaptive item
 export const getNextItem = async (
   sessionId: number,
-  response: 0 | 1 | null = null
+  response: 0 | 1 | null
 ): Promise<NextItemResponse> => {
-  const url = `/tests/${sessionId}/next`;
-  const payload: NextItemRequest = { response };
-  const result = await axiosClient.post(url, payload);
+
+  const result = await axiosClient.post<NextItemResponse>(
+    `/tests/${sessionId}/next`,
+    { response }
+  );
+
   return result;
 };
 
@@ -47,17 +50,18 @@ export const getNextItem = async (
 export const stopTest = async (
   sessionId: number
 ): Promise<StopTestResponse> => {
-  const url = `/tests/${sessionId}/stop`;
-  const result = await axiosClient.post(url);
+
+  const result = await axiosClient.post<StopTestResponse>(`/tests/${sessionId}/stop`);
   return result;
 };
+
 
 // 4) Get details of a specific test session
 export const getTestDetail = async (
   sessionId: number
 ): Promise<TestDetailResponse> => {
-  const url = `/tests/${sessionId}`;
-  const result = await axiosClient.get(url);
+
+  const result = await axiosClient.get<TestDetailResponse>(`/tests/${sessionId}`);
   return result;
 };
 
@@ -65,8 +69,10 @@ export const getTestDetail = async (
 export const getMySessions = async (
   subject = ""
 ): Promise<TestSessionListItem[]> => {
+
   const url = subject ? `/tests?subject=${subject}` : `/tests`;
-  const result = await axiosClient.get(url);
+
+  const result = await axiosClient.get<TestSessionListItem[]>(url);
   return result;
 };
 
