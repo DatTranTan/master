@@ -33,7 +33,7 @@ axiosClient.interceptors.request.use((config) => {
 // -------------------------------------------
 axiosClient.interceptors.response.use(
   <T,>(response: AxiosResponse<T>): T => {
-    return response.data; // JSON thuần
+    return response; // JSON thuần
   },
 
   async (error) => {

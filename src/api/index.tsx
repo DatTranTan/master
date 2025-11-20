@@ -14,13 +14,13 @@ import {
 const register = async (data: RegisterType) => {
   const url = `/auth/register`;
   const result = await axiosClient.post(url, { ...data });
-  return result;
+  return result.data;
 };
 
 const login = async (data: RegisterType) => {
   const url = `/auth/login`;
   const result = await axiosClient.post(url, { ...data });
-  return result;
+  return result.data;
 };
 // 1) Start a new adaptive test session
 export const startTest = async (
@@ -43,7 +43,7 @@ export const getNextItem = async (
     { response }
   );
 
-  return result;
+  return result.data;
 };
 
 // 3) Stop test session
@@ -53,7 +53,7 @@ export const stopTest = async (
   const result = await axiosClient.post<StopTestResponse>(
     `/tests/${sessionId}/stop`
   );
-  return result;
+  return result.data;
 };
 
 // 4) Get details of a specific test session
@@ -63,7 +63,7 @@ export const getTestDetail = async (
   const result = await axiosClient.get<TestDetailResponse>(
     `/tests/${sessionId}`
   );
-  return result;
+  return result.data;
 };
 
 // 5) List all my sessions (optional filter by subject)
@@ -73,7 +73,7 @@ export const getMySessions = async (
   const url = subject ? `/tests?subject=${subject}` : `/tests`;
 
   const result = await axiosClient.get<TestSessionListItem[]>(url);
-  return result;
+  return result.data;
 };
 
 // ===================================================
