@@ -154,7 +154,15 @@ export const Dashboard = () => {
   if (sessionId && !isFinished && question) {
     return (
       <SC.Wrapper>
-        <Card style={{ maxWidth: 720, width: "100%", paddingLeft: 50, paddingRight: 50, paddingBottom: 30 }}>
+        <Card
+          style={{
+            maxWidth: 720,
+            width: "100%",
+            paddingLeft: 50,
+            paddingRight: 50,
+            paddingBottom: 30,
+          }}
+        >
           <Title level={4}>Câu hỏi</Title>
 
           <p style={{ fontSize: 18, fontWeight: 500 }}>{question.content}</p>
@@ -206,8 +214,9 @@ export const Dashboard = () => {
         <Result
           status="success"
           title="Hoàn thành bài kiểm tra!"
-          subTitle={`Điểm: ${result.score_percentage
-            }% | Theta: ${result.final_theta.toFixed(2)}`}
+          subTitle={`Điểm: ${
+            result.score_percentage
+          }% | Theta: ${result.final_theta.toFixed(2)}`}
           extra={[
             <Button type="primary" key="restart" onClick={handleRestart}>
               Làm lại bài mới

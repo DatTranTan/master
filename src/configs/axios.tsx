@@ -1,9 +1,11 @@
-// api/axiosClient.js
 import { notification } from "antd";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import Cookies from "js-cookie";
 import queryString from "query-string";
 
+// -------------------------------------------
+// Tạo axios instance
+// -------------------------------------------
 const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
@@ -12,31 +14,34 @@ const axiosClient = axios.create({
   paramsSerializer: (params) => queryString.stringify(params),
 });
 
-axiosClient.interceptors.request.use(async (config) => {
-  // Handle token here ...
-  config.headers.Authorization = `Bearer ${Cookies.get("token")}`;
+// -------------------------------------------
+// Request interceptor
+// -------------------------------------------
+axiosClient.interceptors.request.use((config) => {
+  const token = Cookies.get("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
   return config;
 });
 
+// -------------------------------------------
+// Response interceptor (TRẢ VỀ JSON THUẦN)
+// -------------------------------------------
+// Đây là phần QUAN TRỌNG – khai báo generic để TS hiểu
+// axiosClient.post<T>() sẽ TRẢ RA T LUÔN
+// -------------------------------------------
 axiosClient.interceptors.response.use(
-  (response) => {
-    if (response && response.data) {
-      return response.data;
-    }
-    return response;
+  <T,>(response: AxiosResponse<T>): T => {
+    return response.data; // JSON thuần
   },
 
   async (error) => {
-    if (error && error?.response?.status === 401) {
+    if (error?.response?.status === 401) {
       await Cookies.remove("token");
-      // await notification.warning({
-      //   message: "",
-      //   description: <b>Xin đăng nhập.</b>,
-      //   key: "Xin đăng nhập.",
-      // });
     }
 
-    throw error;
+    return Promise.reject(error);
   }
 );
 

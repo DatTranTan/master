@@ -123,7 +123,9 @@ export const Header = () => {
               }}
             />
             <span className="logo-text">
-              Mô hình tri thức quan hệ<br/>và ứng dụng
+              Mô hình tri thức quan hệ
+              <br />
+              và ứng dụng
             </span>
           </div>
           <div>
