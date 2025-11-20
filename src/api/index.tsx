@@ -34,7 +34,7 @@ export const startTest = async (
 // 2) Get next adaptive item
 export const getNextItem = async (
   sessionId: number,
-  response: 0 | 1 | null
+  response: number | null
 ): Promise<NextItemResponse> => {
   const result = await axiosClient.post<NextItemResponse>(
     `/tests/${sessionId}/next`,
